@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="iso3.pt.model.Evaluacion" table="EVALUACION">
+
+        <id name="id" column="E_ID">
+            <generator class="native"/>
+        </id>
+
+		<property name="concepto" column="E_CONCEPTO" not-null="true"/>
+		<property name="nota" column="E_NOTA" not-null="true"/> 
+		
+		<many-to-one name="asignatura" column="AS_ID" not-null="true"/>
+		<many-to-one name="alumno" column="AL_ID" not-null="true"/>		
+   </class>
+   
+</hibernate-mapping>
+
