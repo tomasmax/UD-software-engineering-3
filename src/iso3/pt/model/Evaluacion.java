@@ -8,6 +8,11 @@ public class Evaluacion {
 	
 	private Alumno alumno;
 	private Asignatura asignatura;
+	
+
+	public Evaluacion() {
+		super();
+	}
 
 	public int getId() {
 		return id;

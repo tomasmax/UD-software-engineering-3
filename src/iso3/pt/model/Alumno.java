@@ -12,8 +12,10 @@ public class Alumno {
 	
 	private Set<Asignatura> asignaturas;
 	private Set<Evaluacion> evaluaciones;
-	
-	
+		
+	public Alumno() {
+		super();
+	}
 	public Set<Asignatura> getAsignaturas() {
 		return asignaturas;
 	}

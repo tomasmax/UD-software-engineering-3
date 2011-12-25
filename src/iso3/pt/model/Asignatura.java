@@ -7,6 +7,7 @@ public class Asignatura {
 	
 	private int id;
 	private int codigo;
+
 	private String nombre;
 	private float creditos;
 	
@@ -14,6 +15,9 @@ public class Asignatura {
 	private Set<Alumno> alumnos;
 	private Set<Unidad> unidades;
 	
+	public Asignatura() {
+		super();
+	}
 	
 	public Asignatura(int codigo, String nombre, float creditos) {
 		super();

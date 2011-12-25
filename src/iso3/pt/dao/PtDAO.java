@@ -24,7 +24,7 @@ import org.hibernate.cfg.Configuration;
 public class PtDAO implements IptDAO {
 
 	//ATENCION HAY QUE MIRAR SI LAS QUERYS ESTAN BIEN
-	private Map<Integer,Asignatura> cacheAsig;
+	private Map<Integer, Asignatura> cacheAsig;
 	private Session session;
 	private SessionFactory sessionFactory;
 	
@@ -34,7 +34,7 @@ public class PtDAO implements IptDAO {
 	protected PtDAO(SessionFactory sf)
 	{
 		this.sessionFactory = sf;
-		this.session = this.sessionFactory.openSession();
+		//this.session = this.sessionFactory.openSession();
 		loadCache();
 	}
 	
@@ -47,18 +47,38 @@ public class PtDAO implements IptDAO {
 		return instance;
 	}
 	
+	//Para el test
+	public static PtDAO getInstance(SessionFactory sf)
+	{
+		if(instance == null)
+			instance = new PtDAO(sf);
+		return instance;
+	}
+	
+	
 	//Cargar las asignaturas en la cache. 
 	private void loadCache(){
 		//Session restart
-		this.session.close();
+		//this.session.close();
 		this.session = this.sessionFactory.openSession();
 		//Load cache
-		this.cacheAsig = new HashMap<Integer,Asignatura>();
-		@SuppressWarnings("unchecked")
+		this.cacheAsig = new HashMap<Integer, Asignatura>();
+		
 		List<Asignatura> asig = this.session.createQuery("from Asignatura").list();
-		for(Asignatura a : asig)
+		
+		/*for(Asignatura a : asig)
 		{
-			this.cacheAsig.put(a.getCodigo() , a);
+			//System.out.println(a.getNombre());
+			this.cacheAsig.put(a.getId(), a);
+			System.out.println("cargada"+this.cacheAsig.get(a).getNombre());
+		}*/
+		
+		Iterator iter = asig.iterator();
+		while ( iter.hasNext() ) {
+			Asignatura asignatura = (Asignatura)iter.next();  // fetch the object
+			cacheAsig.put(asignatura.getId(), asignatura);
+			System.out.println("cargada "+asignatura.getNombre());
+		   
 		}
 		
 	}
@@ -77,7 +97,7 @@ public class PtDAO implements IptDAO {
 
 	@Override
 	public List<Evaluacion> getEvaluacionesOrderedByAsignatura(int idAlumno) {
-		List<Evaluacion> lista = session.createQuery("from Evaluacion as ev where ev.alumno.dni = " + idAlumno + " order by EVAL_ASIG").list();
+		List<Evaluacion> lista = session.createQuery("from Evaluacion as ev where ev.alumno.dni = " + idAlumno + " order by AS_ID").list();
 		return lista;
 	}
 
@@ -185,10 +205,10 @@ public class PtDAO implements IptDAO {
 	public Set<Asignatura> getAsignaturasProfesor(int idProfesor) {
 		
 		Set<Asignatura> asignaturas = new HashSet<Asignatura>();
-		Iterator it = cacheAsig.entrySet().iterator();
-		while(it.hasNext()){
-			Asignatura asig = (Asignatura) it.next();
-			if(asig.getProfesor().getId() == idProfesor) asignaturas.add(asig);
+		for(Asignatura asig : cacheAsig.values())
+		{
+			if(asig.getProfesor().getId() == idProfesor)
+				asignaturas.add(asig);
 		}
 		return asignaturas;
 	}
@@ -196,8 +216,8 @@ public class PtDAO implements IptDAO {
 	@Override
 	public List<Evaluacion> getEvaluacionesAsignatura(int idAsignatura) {
 		
-		List<Evaluacion> evall = session.createQuery("from Evaluacion as ev where ev.asignatura.id = " + idAsignatura).list();
-		return evall;
+		List<Evaluacion> evalAsig = session.createQuery("from Evaluacion as ev where ev.asignatura.id = " + idAsignatura).list();
+		return evalAsig;
 	}
 
 	@Override

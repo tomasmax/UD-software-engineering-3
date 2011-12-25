@@ -148,8 +148,8 @@ public class Test {
 	        
 	        //Commit
 	        tx.commit();
-	        //session.close();
-	        //sessionFactory.close();
+	        session.close();
+	        sessionFactory.close();
 	       
 	        System.out.println("Done inserciones1!");
 		}
@@ -157,9 +157,9 @@ public class Test {
 		public void pruebaDAO()
 		{
 			//PRUEBAS DEL DAO
-	        PtDAO dao = PtDAO.getInstance();
+	        PtDAO dao = PtDAO.getInstance(sessionFactory);
 	        
-	        Profesor profe = dao.getProfesor(1);
+	        Profesor profe = dao.getProfesor(2);
 	        System.out.println("EL PROFESOR DE LA ASIGNATURA ES: " + profe.getNombre());
 	        
 	        System.out.println("Alumnos en la asignatura:");
@@ -170,7 +170,7 @@ public class Test {
 	        }
 	        
 	        System.out.println("PRUEBA DE GET EVALUACIONES:");
-	        System.out.println(dao.getEvaluaciones(1, 98789));
+	        System.out.println(dao.getEvaluaciones(1, 78876896));
 	        
 	        System.out.println("PRUEBA DE GET UNIDADES");
 	        System.out.println(dao.getUnidades(1));
@@ -182,11 +182,11 @@ public class Test {
 	        System.out.println(dao.getAsignatura(1));
 	        
 	        System.out.println("PRUEBA DE GET ALUMNOS");
-	        System.out.println(dao.getAlumno(98789));
+	        System.out.println(dao.getAlumno(78876896));
 	        
 	        System.out.println("PRUEBA LOGIN ALUMNO");
 	        try {
-				System.out.println(dao.loginAlumno(98789, "rinoceronte"));
+				System.out.println(dao.loginAlumno(78876896, "alumno").toString());
 			} catch (UserNotFoundException e) {
 				e.printStackTrace();
 			} catch (IncorrectPasswordException e) {
@@ -194,21 +194,21 @@ public class Test {
 			}
 			
 			System.out.println("PRUEBA DE GET ASIGNATURAS POR ALUMNO");
-			System.out.println(dao.getAsignaturas(98789));
+			System.out.println(dao.getAsignaturas(78876896));
 			
 			System.out.println("PRUEBA DE MATRICULAR");
-			System.out.println("Asignaturas antes: " + dao.getAsignaturas(123456));
-			dao.matricular(123456, 1);
-			System.out.println("Asignaturas despues: " + dao.getAsignaturas(123456));
+			System.out.println("Asignaturas antes: " + dao.getAsignaturas(123456789));
+			dao.matricular(123456789, 1);
+			System.out.println("Asignaturas despues: " + dao.getAsignaturas(123456789));
 			dao.getAlumnos(1);
 			
 			System.out.println("PRUEBA DE DESMATRICULAR");
-			dao.desmatricular(123456, 1);
-			System.out.println("Asignaturas despues despues: " + dao.getAsignaturas(123456));
+			dao.desmatricular(123456789, 1);
+			System.out.println("Asignaturas despues despues: " + dao.getAsignaturas(123456789));
 			
 			System.out.println("PRUEBA DE LOGIN PROFESOR");
 			try {
-				System.out.println(dao.loginProfesor(78919033, "money"));
+				System.out.println(dao.loginProfesor(78919033, "profesor").toString());
 			} catch (UserNotFoundException e) {
 				e.printStackTrace();
 			} catch (IncorrectPasswordException e) {
@@ -222,11 +222,15 @@ public class Test {
 			System.out.println(dao.getEvaluacionesAsignatura(1));
 			
 			System.out.println("PRUEBA DE ADD EVALUACION");
-			dao.addEvaluacion("KAKA", new Float(3.2), 1, 123456);
+			dao.addEvaluacion("KAKA", new Float(3.2), 1, 123456789);
 			System.out.println(dao.getEvaluacionesAsignatura(1));
 			
 			System.out.println("PRUEBA DE EVALUACIONES ORDERED BY ASIGNATURA");
-			System.out.println(dao.getEvaluacionesOrderedByAsignatura(98789));
+			List<Evaluacion> list = dao.getEvaluacionesOrderedByAsignatura(78876896);
+			for (Evaluacion e : list )
+			{
+				System.out.println(e.getConcepto());
+			}
 		}
 		
 	    public static void main(String[] args) {

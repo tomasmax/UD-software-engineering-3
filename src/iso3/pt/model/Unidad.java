@@ -7,6 +7,11 @@ public class Unidad {
 	private String titulo;
 	private String contenido;
 	
+	
+	public Unidad() {
+		super();
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -17,13 +17,13 @@
 		
 				
 		<set name="evaluaciones" lazy="true">
-			<key column="AL_ID"/>
-			<one-to-many class="iso3.pt.model.Unidad"/>
+			<key column="AL_DNI"/>
+			<one-to-many class="iso3.pt.model.Evaluacion"/>
 		</set>
 		
 		<set name="asignaturas" table="ALUASIG" lazy="true" inverse="true">
-			<key column="AL_ID"/>
-			<many-to-many column="AS_DNI" class="iso3.pt.model.Alumno"/>
+			<key column="AL_DNI"/>
+			<many-to-many column="AS_DNI" class="iso3.pt.model.Asignatura"/>
 		</set>
 		
    </class>

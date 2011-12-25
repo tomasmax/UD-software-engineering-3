@@ -1,0 +1,54 @@
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- Configuration for the default package. -->
+	<package name="default" extends="struts-default">
+		
+		<!-- Default interceptor stack. -->
+		<default-interceptor-ref name="paramsPrepareParamsStack"/>
+		
+		<action name="showLogin">
+			<result type="chain">login</result>
+        </action>
+
+		<action name="login" class="iso3.pt.action.LoginAction" method="enter">
+			<result name="success">/jsp/Login.jsp</result>
+			<result name="input">/jsp/Login.jsp</result>
+			<result name="loginstudent" type="chain">studentShow</result>
+			<result name="loginlecturer" type="chain">lecturerShow</result>
+			<result name="error">/jsp/LoggingError.jsp</result>
+        </action>
+               
+        <action name="lecturerShow" class="iso3.pt.action.LecturerShowAction" method="lecturerSubjectList">
+        	<result name="success">/jsp/LecturerSubjects.jsp</result>
+			<result name="studentlist">/jsp/SubjectStudents.jsp</result>
+			<result name="error">/jsp/LoggingError.jsp</result>
+        </action>   
+             
+        <action name="studentShow" class="iso3.pt.action.StudentShowAction" method="studentSubjectList">
+       		<result name="success">/jsp/StudentSubjects.jsp</result>
+			<result name="showmark">/jsp/StudentSubjectMarks.jsp</result>
+			<result name="showallmarks">/jsp/StudentAllSubjectsMarks.jsp</result>
+			<result name="error">/jsp/LoggingError.jsp</result>
+        </action>
+                
+        <action name="subjectMarking" class="iso3.pt.action.SubjectMarkingAction" method="enter">
+			<result name="submitmark">/jsp/StudentSubjectMarks.jsp</result>
+			<result name="success">/jsp/StudentSubjectMarkingForm.jsp</result>
+			<result name="error">/jsp/LoggingError.jsp</result>
+        </action>
+                
+        <action name="subjectEnrolling" class="iso3.pt.action.SubjectEnrollingAction" method="enter">
+			<result name="enroll">/jsp/StudentSubjects.jsp</result>
+			<result name="unenroll">/jsp/StudentSubjects.jsp</result>
+			<result name="success">/jsp/StudentSubjectRegistrationForm.jsp</result>
+			<result name="error">/jsp/LoggingError.jsp</result>
+        </action>
+        
+        <action name="subjectShow" class="iso3.pt.action.SubjectShowAction">
+       		<result name="unitlist">/jsp/SubjectUnits.jsp</result>
+			<result name="error">/jsp/LoggingError.jsp</result>
+        </action>
+	</package>
+</struts>
