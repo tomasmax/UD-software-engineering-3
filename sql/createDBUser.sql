@@ -1,16 +1,12 @@
-CREATE DATABASE IF NOT EXISTS hibejcc;
-USE hibejcc;
+CREATE DATABASE IF NOT EXISTS 'PTDB';
 
 --
 -- Create USERS
 --
 
-GRANT ALTER, SELECT,INSERT,UPDATE,DELETE,CREATE,DROP
-           ON hibejcc.*
-           TO eside@'%'
-           IDENTIFIED BY 'eside';
+CREATE USER eside@localhost IDENTIFIED BY 'user1';
 
-GRANT ALTER, SELECT,INSERT,UPDATE,DELETE,CREATE,DROP
-           ON hibejcc.*
+GRANT ALL
+           ON 'ptdb'.*
            TO eside@localhost
-           IDENTIFIED BY 'eside';
+           IDENTIFIED BY 'user1';
