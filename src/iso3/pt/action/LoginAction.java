@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.Preparable;
 public class LoginAction  extends ActionSupport implements Preparable{
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private String selectedRole = null;
 	private String username = null;
 	private String password = null;
