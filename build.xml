@@ -2,10 +2,13 @@
 
 <project basedir="." default="help" name="PracISO3">
 	
+	<property environment="env"/>
+	<property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
+	<property name="conf.dir" value="conf"/>
     <property name="source.dir" value="src"/>
     <property name="build.dir" value="bin"/>
     <property name="lib.dir" value="lib"/>
-    <property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
+	
 	<property name="project.file" value="gestorUD"/>
 	<property name="dist.dir" value="dist"/>
     <!--<property name="hibernate.dir" value="C:\Programming\Java\hibernate-distribution-3.3.2.GA"/>-->
@@ -80,13 +83,13 @@
 			<delete file="${lib.dir}/${project.file}.jar"/>
 	</target>
 	
-	<target name="undeploy">
-			<delete file="${tomcat.home}/webapps/${project.file}.war"/>
-			<delete dir="${tomcat.home}/webapps/${project.file}"/>
+	<target name="deploy" depends="war">
+		<copy file="${dist.dir}/${project.file}.war" todir="${tomcat.home}/webapps"/>
 	</target>
 	
-	<target name="deploy" depends="undeploy, war">
-			<copy file="${dist.dir}/${project.file}.war" todir="${tomcat.home}/webapps"/>
+	<target name="undeploy">
+		<delete file="${tomcat.home}/webapps/${project.file}.war"/>
+		<delete dir="${tomcat.home}/webapps/${project.file}"/>
 	</target>
 	
     <target name="help">
