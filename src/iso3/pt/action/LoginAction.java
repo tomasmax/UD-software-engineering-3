@@ -73,7 +73,7 @@ public class LoginAction  extends ActionSupport implements Preparable{
 	}
 	
 	
-	//DO's
+	//Parte de DO's
 	public String doLogin() {
 		PtDaoService pt =  new PtDaoService();
 		if (!this.getUsername().equals("") && !this.getPassword().equals("")) {

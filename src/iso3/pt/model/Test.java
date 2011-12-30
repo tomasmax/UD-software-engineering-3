@@ -82,11 +82,11 @@ public class Test {
 	        //Alumnos
 	        Alumno al1 = new Alumno(78876896,"alumno", "Tomas Madariaga", "944425123");
 	        
-	        Alumno al2 = new Alumno(123456789,"alumno", "Victor Prieto", "944425123");
+	        Alumno al2 = new Alumno(12345678,"alumno", "Victor Prieto", "944425123");
 	       
-	        Alumno al3 = new Alumno(987654321,"alumno", "Paco de la Barca", "944425123");
+	        Alumno al3 = new Alumno(98765432,"alumno", "Paco de la Barca", "944425123");
 	        
-	        Alumno al4 = new Alumno(111122222,"alumno", "Jaime Perez", "944425123");
+	        Alumno al4 = new Alumno(11112222,"alumno", "Jaime Perez", "944425123");
 	      
 	      	        
 	        //Asignaciones Alumnos-Asignaturas
