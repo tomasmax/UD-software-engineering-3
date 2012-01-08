@@ -6,7 +6,7 @@
     <session-factory>
 
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/PTDB</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/ptbd</property>
         <property name="hibernate.connection.username">user1</property>
         <property name="hibernate.connection.password">user1</property>
         
@@ -26,12 +26,11 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
         -->
-
         <mapping resource="iso3/pt/model/Profesor.hbm.xml"/>
-  		<mapping resource="iso3/pt/model/Asignatura.hbm.xml"/>
-  		<mapping resource="iso3/pt/model/Alumno.hbm.xml"/>
-  		<mapping resource="iso3/pt/model/Unidad.hbm.xml"/>
-  		<mapping resource="iso3/pt/model/Evaluacion.hbm.xml"/>
+        <mapping resource="iso3/pt/model/Asignatura.hbm.xml"/>
+        <mapping resource="iso3/pt/model/Alumno.hbm.xml"/>
+        <mapping resource="iso3/pt/model/Unidad.hbm.xml"/>
+        <mapping resource="iso3/pt/model/Evaluacion.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

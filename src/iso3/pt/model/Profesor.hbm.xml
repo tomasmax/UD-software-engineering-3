@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate Mapping DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
@@ -7,17 +7,18 @@
 
     <class name="iso3.pt.model.Profesor" table="PROFESOR">
 
-        <id name="id" column="P_ID">
+        <id name="id" column="PROF_ID">
             <generator class="native"/>
         </id>
 
-        <property name="nombre" column="P_NOMBRE" unique="true" not-null="true"/>
-		<property name="dni" column="P_DNI"/>
-		<property name="password" column="P_PASSWORD"/> 
-		<property name="telefono" column="P_TELEFONO"/>
-		<property name="email" column="P_EMAIL"/>
-		<property name="despacho" column="P_DESPACHO"/>
+        <property name="nombre" column="PROF_NOMBRE" unique="true" not-null="true"/>
 		
-   </class>
-   
+		<property name="dni" column="PROF_DNI" />
+		<property name="password" column="PROF_PASSWORD" />
+		<property name="telefono" column="PROF_TELEFONO" />
+		<property name="email" column="PROF_EMAIL" />
+		<property name="despacho" column="PROF_DESPACHO" />
+
+    </class>
+
 </hibernate-mapping>

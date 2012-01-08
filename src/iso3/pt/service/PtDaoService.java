@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import iso3.pt.dao.PtDAO;
-import iso3.pt.util.UserNotFoundException;
-import iso3.pt.util.IncorrectPasswordException;
+import iso3.pt.dao.UserNotFoundException;
+import iso3.pt.dao.IncorrectPasswordException;
 
 import iso3.pt.model.Alumno;
 import iso3.pt.model.Asignatura;
@@ -13,7 +13,7 @@ import iso3.pt.model.Evaluacion;
 import iso3.pt.model.Profesor;
 import iso3.pt.model.Unidad;
 
-public class PtDaoService implements PtService {
+public class PtDaoService implements IPtService {
     private PtDAO dao;
 
     public PtDaoService() {

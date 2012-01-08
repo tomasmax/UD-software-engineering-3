@@ -1,37 +1,28 @@
 package iso3.pt.model;
 
 public class Profesor {
-		
-	private int id;
+	private Integer id;
 	private String nombre;
-	private int dni;
+	private Integer dni;
 	private String password;
-	private int telefono;
+	private Integer telefono;
 	private String email;
 	private String despacho;
 	
+	protected Profesor(){
+	}
 	
-	public Profesor(int id, String nombre, int dni, String password,
-			int telefono, String email, String despacho) {
+	public Profesor(String nombre) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
-		this.dni = dni;
-		this.password = password;
-		this.telefono = telefono;
-		this.email = email;
-		this.despacho = despacho;
-	}
 
-	public Profesor() {
-		// TODO Auto-generated constructor stub
 	}
-
-	public int getId() {
+	
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -43,11 +34,11 @@ public class Profesor {
 		this.nombre = nombre;
 	}
 
-	public int getDni() {
+	public Integer getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
 
@@ -59,11 +50,11 @@ public class Profesor {
 		this.password = password;
 	}
 
-	public int getTelefono() {
+	public Integer getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
 
@@ -82,7 +73,8 @@ public class Profesor {
 	public void setDespacho(String despacho) {
 		this.despacho = despacho;
 	}
-	
-	
 
+	public String toString(){
+		return "(" + this.id + " | " + this.nombre + ")";
+	}
 }

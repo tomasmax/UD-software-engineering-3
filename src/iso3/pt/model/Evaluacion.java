@@ -2,23 +2,21 @@ package iso3.pt.model;
 
 public class Evaluacion {
 	
-	private int id;
+	private Integer id;
 	private String concepto;
-	private float nota;
+	private Float nota;
 	
-	private Alumno alumno;
 	private Asignatura asignatura;
+	private Alumno alumno;
 	
-
-	public Evaluacion() {
-		super();
+	protected Evaluacion(){
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -30,20 +28,12 @@ public class Evaluacion {
 		this.concepto = concepto;
 	}
 
-	public float getNota() {
+	public Float getNota() {
 		return nota;
 	}
 
-	public void setNota(float nota) {
+	public void setNota(Float nota) {
 		this.nota = nota;
-	}
-
-	public Alumno getAlumno() {
-		return alumno;
-	}
-
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
 	}
 
 	public Asignatura getAsignatura() {
@@ -54,15 +44,24 @@ public class Evaluacion {
 		this.asignatura = asignatura;
 	}
 
-	public Evaluacion( String concepto, float nota, Alumno alumno,
-			Asignatura asignatura) {
-		super();
-		
-		this.concepto = concepto;
-		this.nota = nota;
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
-		this.asignatura = asignatura;
+	}
+
+	public String toString(){
+		return "(" + this.concepto + " | " + this.alumno + " " + nota + " AsigID: " + this.asignatura.getId() +" )";
 	}
 	
+	public Evaluacion(Asignatura asignatura, Alumno alumno, Float nota, String concepto) {
+		
+		this.asignatura = asignatura;
+		this.alumno = alumno;
+		this.nota = nota;
+		this.concepto = concepto;
 
+	}
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate Mapping DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
@@ -7,16 +7,16 @@
 
     <class name="iso3.pt.model.Evaluacion" table="EVALUACION">
 
-        <id name="id" column="E_ID">
+        <id name="id" column="EVAL_ID">
             <generator class="native"/>
         </id>
 
-		<property name="concepto" column="E_CONCEPTO" not-null="true"/>
-		<property name="nota" column="E_NOTA" not-null="true"/> 
+        <property name="concepto" column="EVAL_CONCEPTO" not-null="true"/>
+        <property name="nota" column="EVAL_NOTA" not-null="true"/>
 		
-		<many-to-one name="asignatura" column="AS_ID" not-null="true"/>
-		<many-to-one name="alumno" column="AL_ID" not-null="true"/>		
-   </class>
-   
-</hibernate-mapping>
+		<many-to-one name="alumno" column="AL_DNI" not-null="true"/>
+		<many-to-one name="asignatura" column="EVAL_ASIG" not-null="true"/>
 
+    </class>
+
+</hibernate-mapping>

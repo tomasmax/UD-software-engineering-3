@@ -5,31 +5,31 @@ import java.util.Set;
 
 public class Asignatura {
 	
-	private int id;
-	private int codigo;
-
+	private Integer id;
+	private Integer codigo;
+	
 	private String nombre;
-	private float creditos;
+	private Float creditos;
 	
 	private Profesor profesor;
+	
 	private Set<Alumno> alumnos;
 	private Set<Unidad> unidades;
 	
-	public Asignatura() {
-		super();
+	public Asignatura(){
 	}
 	
-	public Asignatura(int codigo, String nombre, float creditos) {
+	public Asignatura(String nombre, Integer codigo, Float creditos) {
 		super();
-	
-		this.codigo = codigo;
 		this.nombre = nombre;
+		this.codigo = codigo;
 		this.creditos = creditos;
 		profesor = new Profesor();
 		alumnos = new HashSet<Alumno>();
 		unidades = new HashSet<Unidad>();
-	}
 
+	}
+	
 	public Profesor getProfesor() {
 		return profesor;
 	}
@@ -54,7 +54,7 @@ public class Asignatura {
 		this.unidades = unidades;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -72,7 +72,7 @@ public class Asignatura {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public float getCreditos() {
+	public Float getCreditos() {
 		return creditos;
 	}
 	public void setCreditos(float creditos) {
@@ -83,6 +83,8 @@ public class Asignatura {
 	{
 		return this.alumnos.contains(a);	
 	}
-		
-
+	
+	public String toString(){
+		return "(" + this.id + "|" + this.nombre + ")";
+	}
 }

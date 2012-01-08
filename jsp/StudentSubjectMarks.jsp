@@ -1,4 +1,4 @@
-%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@page import="iso3.pt.model.Alumno"%>
 <%@page import="iso3.pt.model.Profesor"%>
@@ -71,3 +71,5 @@
 		<% } %>
 	</body>
 </html>
+
+

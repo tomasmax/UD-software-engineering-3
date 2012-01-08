@@ -1,0 +1,6 @@
+Cambiados:
+
+pt.model
+pt.test
+pt.dao
+pt.services

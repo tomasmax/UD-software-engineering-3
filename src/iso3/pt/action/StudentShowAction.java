@@ -90,7 +90,7 @@ public class StudentShowAction extends ActionSupport implements Preparable{
 	public String doMarkList()
 	{
 		Object obj = ActionContext.getContext().getSession().get("logged");
-		//En este caso el IF no se hace con selectedStudent porque a este metodo tambien lo llaman los profesores
+		//En este caso el IF no se hace con selectedStudent porque a este metodo tambien lo llaman profesores
 		if (obj != null) {
 			PtDaoService pt =  new PtDaoService();
 			if (!(obj instanceof Alumno))

@@ -1,31 +1,31 @@
 package iso3.pt.model;
 
 public class Unidad {
-
-	private int id;
-	private String acronimo;
+	private Integer id;
 	private String titulo;
+	private String acronimo;
 	private String contenido;
-	
-	
-	public Unidad() {
-		super();
-	}
 
-	public int getId() {
+
+
+	protected Unidad(){
+	}
+	
+	public Unidad(String titulo, String acronimo, String contenido) {
+		super();
+		this.titulo = titulo;
+		this.acronimo = acronimo;
+		this.contenido = contenido;
+
+	}
+	
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getAcronimo() {
-		return acronimo;
-	}
-
-	public void setAcronimo(String acronimo) {
-		this.acronimo = acronimo;
 	}
 
 	public String getTitulo() {
@@ -36,6 +36,14 @@ public class Unidad {
 		this.titulo = titulo;
 	}
 
+	public String getAcronimo() {
+		return acronimo;
+	}
+
+	public void setAcronimo(String acronimo) {
+		this.acronimo = acronimo;
+	}
+
 	public String getContenido() {
 		return contenido;
 	}
@@ -43,14 +51,8 @@ public class Unidad {
 	public void setContenido(String contenido) {
 		this.contenido = contenido;
 	}
-
-	public Unidad(String acronimo, String titulo, String contenido) {
-		super();
-		
-		this.acronimo = acronimo;
-		this.titulo = titulo;
-		this.contenido = contenido;
+	
+	public String toString(){
+		return "(" + this.id + " | " + this.titulo + ")";
 	}
-	
-	
 }

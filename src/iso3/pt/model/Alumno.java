@@ -5,17 +5,27 @@ import java.util.Set;
 
 public class Alumno {
 	
-	private int dni;
-	private String password;
+	private Integer dni;
 	private String nombre;
+	private String password;
 	private String telefono;
 	
 	private Set<Asignatura> asignaturas;
 	private Set<Evaluacion> evaluaciones;
-		
-	public Alumno() {
-		super();
+	
+	protected Alumno(){
 	}
+	
+	public Alumno(Integer dni, String nombre, String pass) {
+		super();
+		this.nombre = nombre;
+		this.dni = dni;
+		password = pass;
+		asignaturas = new HashSet<Asignatura>();
+		evaluaciones = new HashSet<Evaluacion>();
+
+	}
+	
 	public Set<Asignatura> getAsignaturas() {
 		return asignaturas;
 	}
@@ -28,7 +38,7 @@ public class Alumno {
 	public void setEvaluaciones(Set<Evaluacion> evaluaciones) {
 		this.evaluaciones = evaluaciones;
 	}
-	public int getDni() {
+	public Integer getDni() {
 		return dni;
 	}
 	public void setDni(int dni) {
@@ -52,15 +62,8 @@ public class Alumno {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public Alumno(int dni, String password, String nombre, String telefono) {
-		super();
-		this.dni = dni;
-		this.password = password;
-		this.nombre = nombre;
-		this.telefono = telefono;
-		this.asignaturas = new HashSet<Asignatura>();
-		this.evaluaciones = new HashSet<Evaluacion>();
+
+	public String toString(){
+		return "(" + this.dni + " | " + this.nombre + ")";
 	}
-	
-	
 }

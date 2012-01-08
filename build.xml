@@ -1,76 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project basedir="." default="help" name="PracISO3">
+<project basedir="." default="help" name="PT_ISO3">
 	
 	<property environment="env"/>
-	<property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
-	<property name="conf.dir" value="conf"/>
-    <property name="source.dir" value="src"/>
-    <property name="build.dir" value="bin"/>
-    <property name="lib.dir" value="lib"/>
+		<property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
+		<property name="project.file" value="gestorUD"/>
+	    <property name="source.dir" value="src"/>
+	    <property name="build.dir" value="bin"/>
+		<property name="conf.dir" value="conf"/>
+	    <property name="lib.dir" value="lib"/>
+	    <property name="dist.dir" value="dist"/>
+		<!--<property name="hibernate.dir" value="C:\Programming\Java\hibernate-distribution-3.3.2.GA"/>-->
 	
-	<property name="project.file" value="gestorUD"/>
-	<property name="dist.dir" value="dist"/>
-    <!--<property name="hibernate.dir" value="C:\Programming\Java\hibernate-distribution-3.3.2.GA"/>-->
-    
-	<path id="classpath">
-        <pathelement path="${build.dir}"/>
-        <fileset dir="${lib.dir}">
-            <include name="*.jar"/>
-        </fileset>
-        <!--<fileset dir="${hibernate.dir}">
-            <include name="**/*.jar"/>
-        </fileset>-->
-    </path>
-	
-    <target name="clean">
-        <delete dir="${build.dir}"/>
-    	<delete dir="${dist.dir}"/>
-    </target>
-	
-    <target name="prepare">
-    	<mkdir dir="${build.dir}"/>
-    	<mkdir dir="${dist.dir}"/>
-    </target>
- 
-    <target name="build" depends="prepare">
-        <javac srcdir="${source.dir}" destdir="${build.dir}" deprecation="true" fork="true" debug="true">
-            <classpath>
-                <path refid="classpath"/>
-            </classpath>
-        </javac>
-    	<copy todir="${build.dir}">
-            <fileset dir="${source.dir}">
-                <include name="**/*.xml"/>
-            	<include name="**/*.properties"/>
-            </fileset>
-    		<fileset dir="${conf.dir}">
-			    <include name="**/*.xml"/>
-			    <include name="**/*.properties"/>
-				<exclude name="**/web.xml"/>
-    		</fileset>
-    	</copy>
-    </target>
-	
-    <target name="test" depends="build">
-        <java classname="iso3.pt.model.Test" fork="true">
-            <classpath>
-                <path refid="classpath"/>
-            </classpath>
-        </java>
-    </target>
-	
-	<target name="jar" depends="build">
+		<path id="classpath">
+	        <pathelement path="${build.dir}"/>
+	        <fileset dir="${lib.dir}">
+	            <include name="*.jar"/>
+	        </fileset>
+			<!--<fileset dir="${hibernate.dir}">
+				<include name="**/*.jar"/>
+			</fileset>-->
+	    </path>
+		
+	    <target name="clean">
+	        <delete dir="${build.dir}"/>
+	        <delete dir="${dist.dir}"/>
+	    </target>
+		
+	    <target name="prepare" depends="clean">
+	    	<mkdir dir="${build.dir}"/>
+	    	<mkdir dir="${dist.dir}"/>
+	    </target>
+	 
+	    <target name="build" depends="prepare">
+	        <javac srcdir="${source.dir}" debug="true" destdir="${build.dir}" deprecation="true" fork="true">
+	            <classpath>
+	                <path refid="classpath"/>
+	            </classpath>
+	        </javac>
+	    	<copy todir="${build.dir}">
+	            <fileset dir="${source.dir}">
+	                <include name="**/*.xml"/>
+	            	<include name="**/*.properties"/>
+	            </fileset>
+				<fileset dir="${conf.dir}">
+	                <include name="**/*.xml"/>
+	            	<include name="**/*.properties"/>
+					<exclude name="**/web.xml"/>
+	            </fileset>
+	    	</copy>
+	    </target>
+		
+	    <target name="test" depends="build">
+			<java classname="iso3.pt.test.Test" fork="true">
+	            <classpath>
+	                <path refid="classpath"/>
+	            </classpath>
+	        </java>
+	    </target>
+		
+		<target name="jar" depends="build">
 			<jar destfile="${dist.dir}/${project.file}.jar">
-		     	<fileset dir="${build.dir}" excludes="**/Test.class"/>
-		        <manifest>
-		        	<attribute name="Built-By" value="University of Deusto"/>
-		        </manifest>
-		    </jar>
-	</target>
-	
-	<target name="war" depends="jar">
-		<copy file="${dist.dir}/${project.file}.jar" todir="${lib.dir}"/>
+	            <fileset dir="${build.dir}" excludes="**/Test.class"/>
+	            <manifest>
+	                <attribute name="Built-By" value="University of Deusto"/>
+	            </manifest>
+	        </jar>
+		</target>
+		
+	    <target name="war" depends="jar">
+			<copy file="${dist.dir}/${project.file}.jar" todir="${lib.dir}"/>
 			<war	
 				warfile="${dist.dir}/${project.file}.war"
 				webxml="${conf.dir}/web.xml">
@@ -80,19 +79,21 @@
 				<zipfileset dir="jsp" prefix="jsp"/>
 				<zipfileset dir="html"/>
 			</war>
-			<delete file="${lib.dir}/${project.file}.jar"/>
-	</target>
-	
-	<target name="deploy" depends="war">
-		<copy file="${dist.dir}/${project.file}.war" todir="${tomcat.home}/webapps"/>
-	</target>
-	
-	<target name="undeploy">
-		<delete file="${tomcat.home}/webapps/${project.file}.war"/>
-		<delete dir="${tomcat.home}/webapps/${project.file}"/>
-	</target>
+			 <delete file="${lib.dir}/${project.file}.jar"/>
+	    </target>
+		
+		<target name="deploy" depends="undeploy, war">
+			<copy file="${dist.dir}/${project.file}.war" todir="${tomcat.home}/webapps"/>
+	    </target>
+		
+		<target name="undeploy">
+			<delete file="${tomcat.home}/webapps/${project.file}.war"/>
+			<delete dir="${tomcat.home}/webapps/${project.file}"/>
+	    </target>
+		
 	
     <target name="help">
 		<echo>Usage: ant [ clean | prepare | build | jar | war | deploy | undeploy ]</echo>
 	</target>
+
 </project>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate Mapping DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
@@ -11,21 +11,21 @@
             <generator class="assigned"/>
         </id>
 
-		<property name="password" column="AL_PASSWORD"/>
-		<property name="nombre" column="AL_NOMBRE" not-null="true"/> 
-		<property name="telefono" column="AL_TELEFONO"/>
+        <property name="nombre" column="AL_NOMBRE" not-null="true"/>
+        <property name="telefono" column="AL_TELEFONO"/>
+        <property name="password" column="AL_PASSWORD"/>
 		
-				
-		<set name="evaluaciones" lazy="true">
+		<set name="asignaturas" table="ALUASIG" lazy="true">
+			<key column="AL_DNI"/>
+			<many-to-many column="ASIG_ID" class="iso3.pt.model.Asignatura"/>
+		</set>
+		<set name="evaluaciones" cascade="all" lazy="true" inverse="true">
 			<key column="AL_DNI"/>
 			<one-to-many class="iso3.pt.model.Evaluacion"/>
 		</set>
 		
-		<set name="asignaturas" table="ALUASIG" lazy="true" inverse="true">
-			<key column="AL_DNI"/>
-			<many-to-many column="AS_DNI" class="iso3.pt.model.Asignatura"/>
-		</set>
 		
-   </class>
-   
+
+    </class>
+
 </hibernate-mapping>
