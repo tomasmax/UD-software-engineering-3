@@ -20,17 +20,17 @@ public class LecturerShowAction extends ActionSupport implements Preparable{
 	
 	private int subjectId;
 	private List<Alumno> studentList = null;
-	private Set<Asignatura> subjectList = null;
-	private Profesor lecturer = null;
-	private Asignatura subject = null;	
+	private Set<Asignatura> listaAsig = null;
+	private Profesor profesor = null;
+	private Asignatura asignatura = null;	
 		
 	//Getters & Setters
 	public Set<Asignatura> getSubjectList() {
-		return subjectList;
+		return listaAsig;
 	}
 	
 	public void setSubjectList(Set<Asignatura> subjectList) {
-		this.subjectList = subjectList;
+		this.listaAsig = subjectList;
 	}
 
 	public int getSubjectId() {
@@ -50,28 +50,26 @@ public class LecturerShowAction extends ActionSupport implements Preparable{
 	}
 	
 	public Profesor getLecturer() {
-		return lecturer;
+		return profesor;
 	}
 
 	public void setLecturer(Profesor lecturer) {
-		this.lecturer = lecturer;
+		this.profesor = lecturer;
 	}
 
 	public Asignatura getSubject() {
-		return subject;
+		return asignatura;
 	}
 
 	public void setSubject(Asignatura subject) {
-		this.subject = subject;
+		this.asignatura = subject;
 	}
 	
-	
-	//DO's
 	public String doLecturerSubjectList()
 	{
-		if (lecturer != null) {
+		if (profesor != null) {
 			PtDaoService pt =  new PtDaoService();
-			subjectList = pt.getAsignaturasProfesor(lecturer.getId());
+			listaAsig = pt.getAsignaturasProfesor(profesor.getId());
 			return SUCCESS;
 		}
 		else
@@ -80,11 +78,11 @@ public class LecturerShowAction extends ActionSupport implements Preparable{
 	
 	public String doStudentList()
 	{
-		if (lecturer != null) {
+		if (profesor != null) {
 			PtDaoService pt =  new PtDaoService();
 			studentList = new ArrayList<Alumno>();
 			Set<Alumno> aux = pt.getAlumnos(subjectId);
-			subject = pt.getAsignatura(subjectId);
+			asignatura = pt.getAsignatura(subjectId);
 			for(Alumno a: aux)
 				studentList.add(a);
 			return "studentlist";
@@ -97,6 +95,6 @@ public class LecturerShowAction extends ActionSupport implements Preparable{
 	public void prepare() throws Exception {
 		Object obj = ActionContext.getContext().getSession().get("logged");
 		if ((obj instanceof Profesor) && obj!=null)
-			lecturer = (Profesor)obj;
+			profesor = (Profesor)obj;
 	}
 }

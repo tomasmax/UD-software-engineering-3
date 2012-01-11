@@ -2,14 +2,15 @@ package iso3.pt.model;
 
 public class Profesor {
 	private Integer id;
-	private String nombre;
 	private Integer dni;
+	private String nombre;
 	private String password;
-	private Integer telefono;
 	private String email;
+	private Integer telefono;
+	
 	private String despacho;
 	
-	protected Profesor(){
+	public Profesor(){
 	}
 	
 	public Profesor(String nombre) {

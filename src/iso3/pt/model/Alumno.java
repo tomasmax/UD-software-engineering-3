@@ -6,14 +6,15 @@ import java.util.Set;
 public class Alumno {
 	
 	private Integer dni;
+	private String telefono;
 	private String nombre;
 	private String password;
-	private String telefono;
+	
 	
 	private Set<Asignatura> asignaturas;
 	private Set<Evaluacion> evaluaciones;
 	
-	protected Alumno(){
+	public Alumno(){
 	}
 	
 	public Alumno(Integer dni, String nombre, String pass) {

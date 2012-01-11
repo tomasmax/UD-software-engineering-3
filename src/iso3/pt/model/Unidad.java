@@ -1,6 +1,7 @@
 package iso3.pt.model;
 
 public class Unidad {
+	
 	private Integer id;
 	private String titulo;
 	private String acronimo;
@@ -8,7 +9,7 @@ public class Unidad {
 
 
 
-	protected Unidad(){
+	public Unidad(){
 	}
 	
 	public Unidad(String titulo, String acronimo, String contenido) {

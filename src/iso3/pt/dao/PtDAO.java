@@ -58,14 +58,10 @@ public class PtDAO implements IPtDAO {
 		//Carga de la caché
 		mapAsig = new HashMap<Integer,Asignatura>();
 		List<Asignatura> asig = session.createQuery("from Asignatura").list();
-		/*for(Asignatura a : asig1)
-		{
-			mapAsig.put(a.getId(), a);
-			System.out.println("cargada"+this.mapAsig.get(a).getNombre());
-		}*/
+	
 		Iterator iter = asig.iterator();
 		while ( iter.hasNext() ) {
-			Asignatura asignatura = (Asignatura)iter.next();  // fetch the object
+			Asignatura asignatura = (Asignatura)iter.next();
 			mapAsig.put(asignatura.getId(), asignatura);
 			System.out.println("cargada "+asignatura.getNombre());
 		   

@@ -23,7 +23,7 @@ public class LoginAction  extends ActionSupport implements Preparable{
 	Alumno student = null;
 	private List<String> roleList = null;
 	
-	//Getters & Setters
+
 	public Alumno getSelectedStudent() {
 		return student;
 	}
@@ -72,8 +72,6 @@ public class LoginAction  extends ActionSupport implements Preparable{
 		this.roleList = roleList;
 	}
 	
-	
-	//DO's
 	public String doLogin() {
 		PtDaoService pt =  new PtDaoService();
 		if (!this.getUsername().equals("") && !this.getPassword().equals("")) {

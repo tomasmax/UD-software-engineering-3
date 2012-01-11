@@ -33,28 +33,29 @@ public class Test {
         Transaction tx = session.beginTransaction();
         
         //Profesores
-        Profesor prof1 = new Profesor("Diego Lopez de Ipina");
+        Profesor prof1 = new Profesor("Asier Perallos");
         prof1.setDespacho("501");
-        prof1.setDni(78919033);
-        prof1.setEmail("dipina@deusto.es");
+        prof1.setDni(78888888);
+        prof1.setEmail("perallos@deusto.es");
         prof1.setPassword("profesor");
         prof1.setTelefono(944455567);
         
         Profesor prof2 = new Profesor("Alex Rayon");
         prof2.setDespacho("502");
-        prof2.setDni(78122033);
+        prof2.setDni(77777777);
         prof2.setEmail("alex@deusto.es");
         prof2.setPassword("profesor");
         prof2.setTelefono(944455568);
         
         
-        Profesor prof3 = new Profesor("Rebeca Cortazar");
+        Profesor prof3 = new Profesor("Diego Lopez de Ipina");
         prof3.setDespacho("301");
-        prof3.setDni(78919034);
-        prof3.setEmail("rebeca@deusto.es");
+        prof3.setDni(79999999);
+        prof3.setEmail("dipina@deusto.es");
         prof3.setPassword("profesor");  
         prof3.setTelefono(944455569);
         
+      
       //Alumnos
         Alumno al1 = new Alumno(111111111, "Tomas Madariaga", "alumno");
        

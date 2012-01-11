@@ -3,13 +3,13 @@ package iso3.pt.model;
 public class Evaluacion {
 	
 	private Integer id;
-	private String concepto;
 	private Float nota;
+	private String concepto;
 	
 	private Asignatura asignatura;
 	private Alumno alumno;
 	
-	protected Evaluacion(){
+	public Evaluacion(){
 	}
 
 	public Integer getId() {

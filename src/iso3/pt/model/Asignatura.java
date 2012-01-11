@@ -8,8 +8,9 @@ public class Asignatura {
 	private Integer id;
 	private Integer codigo;
 	
-	private String nombre;
 	private Float creditos;
+	private String nombre;
+	
 	
 	private Profesor profesor;
 	

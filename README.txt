@@ -1,4 +1,4 @@
-1. Crear la base de datos 'ptbd' y el usuario user1/user1 ejecutando 
+1. Crear la base de datos 'ptbd' y el usuario user1/user1 
 
 2. Ejecutar el test
 
@@ -7,5 +7,5 @@
 4. Arrancar Tomcat
 
 5. Acceder a http://localhost:8080/gestorUD
-	Para acceder como profesor: (78919033 - profesor)
-	Para acceder como alumno: (11111111 - alumno)
+	Para acceder como profesor: (78888888 - profesor)
+	Para acceder como alumno: (111111111 - alumno)
